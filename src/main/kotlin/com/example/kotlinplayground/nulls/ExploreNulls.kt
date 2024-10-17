@@ -7,7 +7,16 @@ data class Movie(
 
 fun main() {
     var nameNullable : String? = null
-    println("Value is : $nameNullable")
+
+    println("Value is : ${nameNullable?.length}") // safe operator , ?
+    nameNullable = "Danbi"
+    val length = nameNullable?.length?.toLong() ?: 0
+    println("length : $length")
+
+
+//    if (nameNullable != null) {
+//        println("Value is : ${nameNullable.length}")
+//    }
 
     nameNullable = "Danbi"
     println("Value is : $nameNullable")
@@ -16,9 +25,11 @@ fun main() {
 
     val movie = Movie(null, "Cats")
     val saveMovie = saveMovie(movie)
+    println(saveMovie.id!!)
     println("Saved Movie : $saveMovie")
 }
 
 fun saveMovie(movie: Movie): Movie {
-    return movie.copy(id = 1)
+//    return movie.copy(id = 1)
+    return movie
 }
