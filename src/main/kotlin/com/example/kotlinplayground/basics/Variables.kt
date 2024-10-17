@@ -1,5 +1,8 @@
 package com.example.kotlinplayground.basics
 
+import com.example.kotlinplayground.functions.courseName
+import com.example.kotlinplayground.functions.topLevelFunction
+
 fun main() {
     // 상수
     val name = "D"
@@ -26,4 +29,8 @@ fun main() {
         EDF
     """.trimIndent()
     println(multiline1)
+
+    val num = topLevelFunction()
+    println("Num is : $num")
+    println("courseName : $courseName")
 }
