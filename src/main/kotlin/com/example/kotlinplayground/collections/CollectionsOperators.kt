@@ -27,7 +27,32 @@ fun main() {
     }
 //    println("flatMapResult : $flatMapResult")
     val courses = exploreFlatMap(courseList, KAFKA)
-    println("courses : $courses")
+//    println("courses : $courses")
+
+    exploreHashMap()
+}
+
+fun exploreHashMap() {
+    // 변경가능한 key-value 맵 컬렉션
+    val nameAgeMutableMap = mutableMapOf("Danbi" to 33, "chibi" to 10)
+    nameAgeMutableMap
+        .forEach{ (k,v) ->
+            println("Key : $k and the value is $v")
+        }
+    val value = nameAgeMutableMap.get("Danbi")
+    println("Value is $value")
+    val value2 = nameAgeMutableMap["chibi"]
+    println("Value is $value2")
+    val value3 = nameAgeMutableMap.getOrElse("somee"){"abc"}
+    println("Value is $value3")
+    val result = nameAgeMutableMap.containsKey("abc")
+    println("result is $result")
+    val filterMap = nameAgeMutableMap.filterKeys {it.length > 5}
+        .map { it.key.uppercase() }
+    println("filterMap is $filterMap")
+    val maxAge = nameAgeMutableMap
+        .maxByOrNull { it.value }
+    println("maxAge is $maxAge")
 }
 
 fun exploreFlatMap(courseList: MutableList<Course>, kafka: String) : List<String> {
