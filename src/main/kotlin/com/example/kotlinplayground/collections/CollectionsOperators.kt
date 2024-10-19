@@ -2,6 +2,7 @@ package com.example.kotlinplayground.collections
 
 import com.example.kotlinplayground.dataset.Course
 import com.example.kotlinplayground.dataset.CourseCategory
+import com.example.kotlinplayground.dataset.KAFKA
 import com.example.kotlinplayground.dataset.courseList
 
 fun main() {
@@ -10,7 +11,33 @@ fun main() {
     val desPredicate = {c: Course -> c.category == CourseCategory.DESIGN}
 //    exploreFilter(courseList, desPredicate)
 
-    exploreMap(courseList, desPredicate)
+//    exploreMap(courseList, desPredicate)
+
+    val list = listOf(listOf(1,2,3), listOf(4,5,6))
+    val mapResult = list.map { outerList ->
+        outerList.map {
+            it.toDouble()
+        }
+    }
+//    println("mapResult : $mapResult")
+    val flatMapResult = list.flatMap { outerList ->
+        outerList.map {
+            it.toDouble()
+        }
+    }
+//    println("flatMapResult : $flatMapResult")
+    val courses = exploreFlatMap(courseList, KAFKA)
+    println("courses : $courses")
+}
+
+fun exploreFlatMap(courseList: MutableList<Course>, kafka: String) : List<String> {
+    val kafkaCourses = courseList.flatMap { course ->
+        val courseName = course.name
+        course.topicsCovered.filter {
+            it == kafka
+        }.map { courseName }
+    }
+    return kafkaCourses
 }
 
 fun exploreMap(courseList: MutableList<Course>,
