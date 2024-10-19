@@ -8,7 +8,21 @@ fun main() {
     val courseList = courseList()
     val devPredicate = {c: Course -> c.category == CourseCategory.DEVELOPEMENT}
     val desPredicate = {c: Course -> c.category == CourseCategory.DESIGN}
-    exploreFilter(courseList, desPredicate)
+//    exploreFilter(courseList, desPredicate)
+
+    exploreMap(courseList, desPredicate)
+}
+
+fun exploreMap(courseList: MutableList<Course>,
+               predicate: (Course) -> Boolean) {
+
+    val courses = courseList
+        .filter(predicate)
+        .map { "${it.name} - ${it.category}"}
+        .forEach{ // forEach는 반환값이 저장되고 Unit을 반환함
+            println(it)
+        }
+    println("courses: $courses")
 }
 
 fun exploreFilter(courseList: MutableList<Course>,
