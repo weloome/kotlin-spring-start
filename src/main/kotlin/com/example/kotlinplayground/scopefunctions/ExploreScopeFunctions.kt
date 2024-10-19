@@ -5,9 +5,41 @@ import com.example.kotlinplayground.classes.CourseCategory
 
 
 fun main() {
-    exploreApply()
-    exploreAlso()
-    exploreLet()
+//    exploreApply()
+//    exploreAlso()
+//    exploreLet()
+//    exploreWith()
+    exploreRun()
+}
+
+fun exploreRun() {
+    var numbers : MutableList<Int>? = null
+    var result = numbers.run {
+        numbers = mutableListOf(1, 2, 3)
+        numbers?.sum()
+    }
+    println("Run Result is : $result")
+
+    val length = run {
+        val name = "chibi"
+        println(name)
+        name.length
+    }
+    println("Run length is : $length")
+}
+
+fun exploreWith() {
+    val numbers = mutableListOf(1,2,3,4,5)
+
+    val result = with(numbers) {
+        println("Size is ${numbers.size}")
+//        numbers.plus(6)
+//        numbers.sum()
+        val list = numbers.plus(6)
+        println("Size is $size")
+        sum()
+    }
+    println("With Result is : $result")
 }
 
 fun exploreLet() {
