@@ -1,7 +1,5 @@
 # kotlin-spring-start
 
----
-
 Spring Boot를 사용하여 Kotlin 기본 문법을 공부합니다.  
 Udemy의 Pragmatic Code School - "Kotlin 및 Spring Boot를 사용하여 RESTFUL API 구축하기" 강좌의 섹션 01 ~ 10을 기반으로 학습합니다.
 
